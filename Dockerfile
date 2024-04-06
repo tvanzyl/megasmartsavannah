@@ -30,13 +30,7 @@ ENV VIDEO_DEVICE=0
 
 COPY MDV5A.onnx /root/
 
-COPY labels.txt /root
-
-COPY build_infer_primary_yoloV5.txt /root
-
-COPY deepstream_app_build.txt /root
-
-# RUN deepstream-app -c deepstream_app_build.txt
+RUN /usr/src/tensorrt/bin/trtexec --fp16 --optShapes --verbose --onnx=MDV5A.onnx --saveEngine=model_b1_gpu0_fp16.engine
 
 COPY . .
 
