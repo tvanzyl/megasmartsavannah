@@ -3,13 +3,7 @@ enable-perf-measurement=1
 perf-measurement-interval-sec=5
 
 [tiled-display]
-enable=1
-rows=1
-columns=1
-width=1280
-height=720
-gpu-id=0
-nvbuf-memory-type=0
+enable=0
 
 [source0]
 enable=1
@@ -18,12 +12,12 @@ uri=file:///opt/nvidia/deepstream/deepstream/samples/streams/sample_1080p_h264.m
 num-sources=1
 gpu-id=0
 cudadec-memtype=0
-camera-v4l2-dev-node=4
-camera-width=1280
-camera-height=720
+camera-v4l2-dev-node=$VIDEO_DEVICE
+nvbuf-memory-type=0
+camera-width=1920
+camera-height=1080
 camera-fps-n=30
 camera-fps-d=1
-nvbuf-memory-type=0
 
 [sink0]
 enable=1
@@ -31,11 +25,13 @@ type=2
 sync=0
 gpu-id=0
 nvbuf-memory-type=0
+width=1920
+height=1080
 
 [osd]
 enable=1
 gpu-id=0
-border-width=5
+border-width=2
 text-size=15
 text-color=1;1;1;1;
 text-bg-color=0.3;0.3;0.3;1
@@ -52,8 +48,8 @@ gpu-id=0
 live-source=1
 batch-size=1
 batched-push-timeout=40000
-width=1280
-height=720
+width=1920
+height=1080
 enable-padding=0
 nvbuf-memory-type=0
 
@@ -63,6 +59,15 @@ gpu-id=0
 gie-unique-id=1
 nvbuf-memory-type=0
 config-file=config_infer_primary_yoloV5.txt
+
+[tracker]
+enable=1
+gpu-id=0
+display_tracker-id=0
+tracker-width=960
+tracker-height=544
+ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
+ll-config-file=/opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app/config_tracker_IOU.yml
 
 [tests]
 file-loop=0
