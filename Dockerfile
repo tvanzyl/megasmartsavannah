@@ -36,7 +36,7 @@ COPY build_infer_primary_yoloV5.txt /root
 
 COPY deepstream_app_build.txt /root
 
-RUN deepstream-app -c deepstream_app_build.txt
+# RUN deepstream-app -c deepstream_app_build.txt
 
 COPY . .
 
