@@ -26,9 +26,13 @@ RUN CUDA_VER=12 make -C nvdsinfer_custom_impl_Yolo
 
 WORKDIR /root
 
-RUN deepstream-app -c deepstream_app_build.txt
-
 ENV VIDEO_DEVICE=0
+
+COPY build_infer_primary_yoloV5.txt /root/
+
+COPY deepstream_app_build.txt /root/
+
+#RUN deepstream-app -c deepstream_app_build.txt
 
 COPY . .
 
