@@ -28,11 +28,15 @@ WORKDIR /root
 
 ENV VIDEO_DEVICE=0
 
-COPY build_infer_primary_yoloV5.txt /root/
+COPY MDV5A.onnx /root/
 
-COPY deepstream_app_build.txt /root/
+COPY labels.txt /root
 
-#RUN deepstream-app -c deepstream_app_build.txt
+COPY build_infer_primary_yoloV5.txt /root
+
+COPY deepstream_app_build.txt /root
+
+RUN deepstream-app -c deepstream_app_build.txt
 
 COPY . .
 
