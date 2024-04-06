@@ -28,10 +28,6 @@ WORKDIR /root
 
 ENV VIDEO_DEVICE=0
 
-COPY MDV5A.onnx /root/
-
-RUN /usr/src/tensorrt/bin/trtexec --fp16 --optShapes --verbose --onnx=MDV5A.onnx --saveEngine=model_b1_gpu0_fp16.engine
-
 COPY . .
 
 #CMD ["deepstream-app -c deepstream_app_config.txt"]
