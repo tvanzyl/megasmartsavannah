@@ -12,7 +12,7 @@ uri=file:///opt/nvidia/deepstream/deepstream/samples/streams/sample_1080p_h264.m
 num-sources=1
 gpu-id=0
 cudadec-memtype=0
-camera-v4l2-dev-node=$VIDEO_DEVICE
+camera-v4l2-dev-node=0
 nvbuf-memory-type=0
 camera-width=1920
 camera-height=1080
@@ -63,7 +63,6 @@ config-file=config_infer_primary_yoloV5.txt
 [tracker]
 enable=1
 gpu-id=0
-display_tracker-id=0
 tracker-width=960
 tracker-height=544
 ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
