@@ -18,7 +18,7 @@ It is probably zero if you are running this on your orin nano but if you are att
 ### Command Line
 You should not need to do this but if you would like to get hold of the command line then run
 
-`$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:x86_64 " "`
+`$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:x86_64 /bin/bash`
 
 `$ deepstream-app -c deepstream_app_config.txt`
 
