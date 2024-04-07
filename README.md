@@ -1,4 +1,24 @@
-# Resources 
+# Mega Smart Savannah
+
+## Quickstart
+
+### Video device
+`ls /dev/video*`
+
+Replace below with device number
+
+### X6_64
+`$ sudo docker run --name megasmart --device /dev/video4 --runtime=nvidia -it --net=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v /home:/home -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=4 -w /root --rm tvanzyl/megasmartsavannah:x86_64`
+
+### Orin
+`$ sudo docker run --name megasmart --device /dev/video4 --runtime=nvidia -it --net=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v /home:/home -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=4 -w /root --rm tvanzyl/megasmartsavannah:aarch64`
+
+### Command Line
+`$ deepstream-app -c deepstream_app_config.txt`
+
+deepstream-app -c de
+
+## Resources 
 
 https://github.com/microsoft/CameraTraps/tree/main
 
@@ -8,34 +28,41 @@ https://developer.nvidia.com/embedded/jetpack
 
 [E] https://github.com/NVIDIA/TensorRT
 
-https://catalog.ngc.nvidia.com/orgs/nvidia/collections/deepstream_sdk
+[J] https://catalog.ngc.nvidia.com/orgs/nvidia/collections/deepstream_sdk
 [B] https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream
 [A] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#
 [C] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_deepstream.html
 [D] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_plugin_gst-nvinfer.html
+https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_github.html
 
 [F] https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html
 [G] https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#trtexec-flags
 
 [H] https://github.com/marcoslucianops/DeepStream-Yolo/tree/master
-
 [I] https://github.com/marcoslucianops/DeepStream-Yolo/blob/master/docs/YOLOv5.md
 
-# Workflow
+## Workflow
 
-To create onnx file from your yolov5 checkpoint please follow the following steps [I]
+We use Jetpack 6.0 [J] and the deepstream:6.4-triton-multiarch [B] docker image
+
+To create onnx file from your yolov5 checkpoint please follow [I]
+- MDV5A.onnx should work fine
 
 Install TensorRT 8.6.1 on host [A] and [E]
 
-Convert ONNX to .engine using trtexec [F] and setting in [G]
-`trtexec --fp16 --optShapes --onnx=MDV5A.onnx --saveEngine=model_b1_gpu0_fp16.engine`
+Convert ONNX to .engine using trtexec [F] and setting in [G] this has to be done for each hardware platform
+- `trtexec --fp16 --optShapes --onnx=MDV5A.onnx --saveEngine=model_b1_gpu0_fp16.engine`
 
 Build the docker image
-`$make build` 
+- `$make build` 
 
 Push the image to doker hub
-`$make push`
+- `$make push`
 
-# Configuration
+## Configuration
 
+- Mavic HDMI 1920x1080@30fps
+- Magewell HDMI to USB 1920x1080p@60fps
+
+Setting for DeepStream Reference Application - deepstream-app in [C] and [D]
 
