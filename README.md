@@ -5,41 +5,44 @@
 ### Video device
 `ls /dev/video*`
 
-Replace below with device number
+Replace below with device number for /dev/video? and VIDEO_DEVICE=?.
+
+It is probably zero if you are running this on your orin nano but if you are attaching to your desktop it might be others.
 
 ### X6_64
-`$ sudo docker run --name megasmart --device /dev/video4 --runtime=nvidia -it --net=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v /home:/home -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=4 -w /root --rm tvanzyl/megasmartsavannah:x86_64`
+`$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:x86_64`
 
 ### Orin
-`$ sudo docker run --name megasmart --device /dev/video4 --runtime=nvidia -it --net=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v /home:/home -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=4 -w /root --rm tvanzyl/megasmartsavannah:aarch64`
+`$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:aarch64`
 
 ### Command Line
-`$ deepstream-app -c deepstream_app_config.txt`
+You should not need to do this but if you would like to get hold of the command line then run
 
-deepstream-app -c de
+`$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:x86_64 /bin/sh`
+
+`$ deepstream-app -c deepstream_app_config.txt`
 
 ## Resources 
 
-https://github.com/microsoft/CameraTraps/tree/main
-
-https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/#install-pytorch-and-torchvision
-
-https://developer.nvidia.com/embedded/jetpack
-
-[E] https://github.com/NVIDIA/TensorRT
-
-[J] https://catalog.ngc.nvidia.com/orgs/nvidia/collections/deepstream_sdk
-[B] https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream
-[A] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#
-[C] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_deepstream.html
-[D] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_plugin_gst-nvinfer.html
-https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_github.html
-
-[F] https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html
-[G] https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#trtexec-flags
-
-[H] https://github.com/marcoslucianops/DeepStream-Yolo/tree/master
-[I] https://github.com/marcoslucianops/DeepStream-Yolo/blob/master/docs/YOLOv5.md
+- https://github.com/microsoft/CameraTraps/tree/main
+---
+- https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/#install-pytorch-and-torchvision
+---
+- https://developer.nvidia.com/embedded/jetpack
+---
+- [J] https://catalog.ngc.nvidia.com/orgs/nvidia/collections/deepstream_sdk
+- [A] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#
+- [B] https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream
+- [C] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_deepstream.html
+- [D] https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_plugin_gst-nvinfer.html
+- https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_github.html
+---
+- [E] https://github.com/NVIDIA/TensorRT
+- [F] https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html
+- [G] https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#trtexec-flags
+---
+- [H] https://github.com/marcoslucianops/DeepStream-Yolo/tree/master
+- [I] https://github.com/marcoslucianops/DeepStream-Yolo/blob/master/docs/YOLOv5.md
 
 ## Workflow
 

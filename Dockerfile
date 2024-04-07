@@ -24,10 +24,14 @@ WORKDIR /root/DeepStream-Yolo
 
 RUN CUDA_VER=12 make -C nvdsinfer_custom_impl_Yolo
 
-WORKDIR /root
-
 ENV VIDEO_DEVICE=0
 
-COPY . .
+WORKDIR /root
 
-#CMD ["deepstream-app -c deepstream_app_config.txt"]
+COPY assets/* .
+
+COPY ./entrypoint.sh .
+
+RUN chmod +x entrypoint.sh
+
+CMD ["./entrypoint.sh", "deepstream-app -c deepstream_app_config_fixed.txt"]
