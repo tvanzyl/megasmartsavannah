@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     cmake \
     v4l-utils \
     build-essential \
+    gettext \
 && rm -rf /var/lib/apt/lists/*
 
 RUN /opt/nvidia/deepstream/deepstream/user_additional_install.sh
