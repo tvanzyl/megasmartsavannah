@@ -14,5 +14,5 @@ build: assets/model_b1_gpu0_fp16.engine
 push:
 	docker push tvanzyl/megasmartsavannah:$(processor)
 
-assets/model_b1_gpu0_fp16.engine: MDV5A.onnx
+assets/model_b1_gpu0_fp16.engine: assets/MDV5A.onnx
 	/usr/src/tensorrt/bin/trtexec --fp16 --optShapes --onnx=MDV5A.onnx --saveEngine=assets/model_b1_gpu0_fp16.engine
