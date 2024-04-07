@@ -35,4 +35,5 @@ COPY ./entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
 
-CMD ["./entrypoint.sh", "/bin/deepstream-app -c deepstream_app_config_fixed.txt"]
+CMD ["./entrypoint.sh", "/bin/deepstream-app"]
+# -c deepstream_app_config_fixed.txt"]
