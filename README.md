@@ -3,11 +3,13 @@
 ## Quickstart
 
 ### Video device
-`ls /dev/video*`
+`$ ls /dev/video*`
 
 Replace below with device number for /dev/video? and VIDEO_DEVICE=?.
 
 It is probably zero if you are running this on your orin nano but if you are attaching to your desktop it might be others.
+
+`$ xhost +`
 
 ### X6_64
 `$ sudo docker run --name megasmart --device /dev/video0 --runtime=nvidia -it --network=host --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e VIDEO_DEVICE=0 -w /root --rm tvanzyl/megasmartsavannah:x86_64`
