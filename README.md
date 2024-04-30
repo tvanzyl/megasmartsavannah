@@ -27,7 +27,7 @@ You should not need to do this but if you would like to get hold of the command 
 ### Running int8 mode
 You can run the image you created in int8 engine by running:
 
-`$ -e VIDEO_DEVICE=0 -e FLOAT_VERSION=int8 -e NETWORK_MODE=2`
+`$ -e VIDEO_DEVICE=0 -e FLOAT_VERSION=int8 -e NETWORK_MODE=1`
 
 to your parameters when using docker run. By default the docker is set to automatically use float16 engine.
 
