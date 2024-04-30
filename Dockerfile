@@ -27,6 +27,10 @@ RUN CUDA_VER=12 make -C nvdsinfer_custom_impl_Yolo
 
 ENV VIDEO_DEVICE=0
 
+ENV FLOAT_VERSION=fp16
+
+ENV NETWORK_MODE=2
+
 WORKDIR /root
 
 COPY assets/* .
@@ -35,4 +39,4 @@ COPY ./entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
 
-CMD envsubst < deepstream_app_config.txt > deepstream_app_config_fixed.txt; deepstream-app -c deepstream_app_config_fixed.txt
+CMD sh entrypoint.sh

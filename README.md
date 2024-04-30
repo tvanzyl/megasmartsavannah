@@ -24,7 +24,7 @@ You should not need to do this but if you would like to get hold of the command 
 
 `$ deepstream-app -c deepstream_app_config.txt`
 
-## Resources 
+## Resources
 
 - https://github.com/microsoft/CameraTraps/tree/main
 ---
@@ -59,7 +59,7 @@ Convert ONNX to .engine using trtexec [F] and setting in [G] this has to be done
 - `trtexec --fp16 --optShapes --onnx=MDV5A.onnx --saveEngine=model_b1_gpu0_fp16.engine`
 
 Build the docker image
-- `$make build` 
+- `$make build`
 
 Push the image to doker hub
 - `$make push`
@@ -70,4 +70,3 @@ Push the image to doker hub
 - Magewell HDMI to USB 1920x1080p@60fps
 
 Setting for DeepStream Reference Application - deepstream-app in [C] and [D]
-

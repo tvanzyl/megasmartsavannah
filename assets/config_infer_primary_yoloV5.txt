@@ -2,13 +2,13 @@
 gpu-id=0
 net-scale-factor=0.0039215697906911373
 model-color-format=0
-onnx-file=MDV5A.onnx
-model-engine-file=model_b1_gpu0_fp16.engine
+onnx-file=MDV5A_batch_1.onnx
+model-engine-file=model_b1_gpu0_$FLOAT_VERSION.engine
 #int8-calib-file=calib.table
 infer-dims=3;1280;1280
 labelfile-path=labels.txt
 batch-size=1
-network-mode=2
+network-mode=$NETWORK_MODE
 num-detected-classes=3
 interval=5
 gie-unique-id=1
@@ -24,6 +24,6 @@ custom-lib-path=DeepStream-Yolo/nvdsinfer_custom_impl_Yolo/libnvdsinfer_custom_i
 engine-create-func-name=NvDsInferYoloCudaEngineGet
 
 [class-attrs-all]
-nms-iou-threshold=0.45
-pre-cluster-threshold=0.25
+nms-iou-threshold=0.65
+pre-cluster-threshold=0.15
 topk=300

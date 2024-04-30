@@ -1,2 +1,3 @@
-MDV5A.onnx
-model_b1_gpu0_fp16.engine
+*.onnx
+*.engine
+*.mp4
